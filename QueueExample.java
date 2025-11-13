@@ -1,24 +1,46 @@
+import java.util.LinkedList;
+
 class MyQueue<T> {
+    private LinkedList<T> queue; // 內部使用 LinkedList 來儲存資料
 
     public MyQueue() {
+        queue = new LinkedList<>();
     }
 
+    // 入隊（新增元素到尾端）
     public void enqueue(T item) {
+        queue.addLast(item);
     }
 
+    // 出隊（移除並返回隊首元素）
     public T dequeue() {
-        return queue.first();
+        if (queue.isEmpty()) {
+            System.out.println("Queue is empty.");
+            return null;
+        }
+        return queue.removeFirst();
     }
-    
+
+    // 判斷是否為空
     public boolean isEmpty() {
         return queue.isEmpty();
     }
 
-    // 返回队列中的元素数量
+    // 返回目前佇列的大小
     public int size() {
         return queue.size();
     }
+
+    // 額外方法：查看隊首元素但不移除
+    public T peek() {
+        if (queue.isEmpty()) {
+            System.out.println("Queue is empty.");
+            return null;
+        }
+        return queue.getFirst();
+    }
 }
+
 
 public class QueueExample {
     public static void main(String[] args) {
